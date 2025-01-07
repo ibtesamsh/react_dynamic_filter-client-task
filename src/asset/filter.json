@@ -85,14 +85,14 @@
       "id": "dispose_first_level",
       "label": "Dispose First Level",
       "type": "dropdown",
-      "options": ["Level1Dispose"],
+      "options": ["followup","Level1Dispose"],
       "placeholder": "Loading..."
     },
     {
       "id": "dispose_second_level",
       "label": "Dispose Second Level",
       "type": "dropdown",
-      "options": ["Level2Dispose"],
+      "options": ["Level2Dispose","customer_NA"],
       "placeholder": "Loading..."
     },
     {
@@ -113,7 +113,7 @@
       "id": "dispose_third_level",
       "label": "Dispose Third Level",
       "type": "dropdown",
-      "options": ["Level3Dispose"],
+      "options": ["Level3Dispose","Network_NA"," - "],
       "placeholder": "Loading..."
     },
     {

@@ -87,7 +87,6 @@
 
 // export default FiltersComponent;
 
-
 // import React, { useState } from "react";
 // import Grid from "@mui/material/Grid";
 // import Autocomplete from "@mui/material/Autocomplete";
@@ -402,20 +401,13 @@
 //   );
 // };
 
-
-
-
-
-
-
-
 import React, { useState } from "react";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import Button from "@mui/material/Button";
-import filterData from "../asset/filter.json";  
-import { saveAs } from "file-saver";  
+import filterData from "../asset/filter.json";
+import { saveAs } from "file-saver";
 
 export const FiltersComponent = ({ filteredData, onFilterChange }) => {
   const [selectedDateRange, setSelectedDateRange] = useState("");
@@ -464,9 +456,21 @@ export const FiltersComponent = ({ filteredData, onFilterChange }) => {
   };
 
   return (
-    <div style={{ padding: "16px", display: "flex", flexDirection: "column", gap: "16px" }}>
+    <div
+      style={{
+        padding: "16px",
+        display: "flex",
+        flexDirection: "column",
+        gap: "16px",
+      }}
+    >
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
-        <Button variant="contained" color="primary" onClick={toggleFilters} style={{ marginBottom: "16px" }}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={toggleFilters}
+          style={{ marginBottom: "16px" }}
+        >
           {showFilters ? "Hide Filters" : "Show Filters"}
         </Button>
       </div>
@@ -474,8 +478,18 @@ export const FiltersComponent = ({ filteredData, onFilterChange }) => {
       {showFilters && (
         <div style={{ display: "flex", flexWrap: "wrap", gap: "16px" }}>
           {filterData.filters.map((filter) => (
-            <div key={filter.id} style={{ flex: "1 1 18%", minWidth: "150px", maxWidth: "20%" }}>
-              <InputLabel style={{ fontSize: "11px", fontWeight: 600, marginBottom: "4px", display: "block" }}>
+            <div
+              key={filter.id}
+              style={{ flex: "1 1 18%", minWidth: "150px", maxWidth: "20%" }}
+            >
+              <InputLabel
+                style={{
+                  fontSize: "11px",
+                  fontWeight: 600,
+                  marginBottom: "4px",
+                  display: "block",
+                }}
+              >
                 {filter.label}
               </InputLabel>
 
@@ -484,18 +498,48 @@ export const FiltersComponent = ({ filteredData, onFilterChange }) => {
                   multiple={filter.options.length > 1}
                   id={`autocomplete-${filter.id}`}
                   size="small"
-                  options={filter.options.map((option) => (typeof option === "string" ? option : option.label))}
+                  // options={filter.options.map((option) => (typeof option === "string" ? option : option.label))} // only if you want to pass object than use this
+                  options={filter.options}
+                  getOptionLabel={(option) => {
+                    if (typeof option === "string") return option;
+                    if (typeof option === "object" && option !== null)
+                      return option.label || "Undefined";
+                    return "Undefined";
+                  }}
+                  isOptionEqualToValue={(option, value) => {
+                    if (
+                      typeof option === "object" &&
+                      typeof value === "object"
+                    ) {
+                      return option.value === value.value;
+                    }
+                    return option === value;
+                  }}
                   value={autocompleteValues[filter.id] || []}
                   renderInput={(params) => (
                     <TextField
                       {...params}
                       variant="standard"
-                      placeholder={autocompleteValues[filter.id] && autocompleteValues[filter.id].length > 0 ? "" : filter.placeholder}
-                      InputProps={{ ...params.InputProps, style: { fontSize: "11px", padding: "0 6px", height: "30px" } }}
+                      placeholder={
+                        autocompleteValues[filter.id] &&
+                        autocompleteValues[filter.id].length > 0
+                          ? ""
+                          : filter.placeholder
+                      }
+                      InputProps={{
+                        ...params.InputProps,
+                        style: {
+                          fontSize: "11px",
+                          padding: "0 6px",
+                          height: "30px",
+                        },
+                      }}
                       InputLabelProps={{ style: { fontSize: "11px" } }}
                     />
                   )}
-                  onChange={(event, value) => handleAutocompleteChange(filter.id, value)}
+                  onChange={(event, value) =>
+                    handleAutocompleteChange(filter.id, value)
+                  }
                 />
               )}
 
@@ -506,17 +550,46 @@ export const FiltersComponent = ({ filteredData, onFilterChange }) => {
                   variant="standard"
                   placeholder={filter.placeholder}
                   value={autocompleteValues[filter.id] || ""}
-                  onChange={(e) => setAutocompleteValues((prevValues) => ({ ...prevValues, [filter.id]: e.target.value }))}
-                  InputProps={{ style: { fontSize: "11px", padding: "0 6px", height: "30px" } }}
+                  onChange={(e) =>
+                    setAutocompleteValues((prevValues) => ({
+                      ...prevValues,
+                      [filter.id]: e.target.value,
+                    }))
+                  }
+                  InputProps={{
+                    style: {
+                      fontSize: "11px",
+                      padding: "0 6px",
+                      height: "30px",
+                    },
+                  }}
                 />
               )}
             </div>
           ))}
 
-          <div style={{ width: "100%", display: "flex", justifyContent: "flex-end", marginTop: "16px", gap: "8px" }}>
-            <Button variant="contained" color="primary" onClick={handleFilter}>Filter</Button>
-            <Button variant="outlined" color="secondary" onClick={handleReset}>Reset Filters</Button>
-            <Button variant="contained" color="default" onClick={handleDownloadCSV}>Download CSV</Button>
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "flex-end",
+              marginTop: "16px",
+              gap: "8px",
+            }}
+          >
+            <Button variant="contained" color="primary" onClick={handleFilter}>
+              Filter
+            </Button>
+            <Button variant="outlined" color="secondary" onClick={handleReset}>
+              Reset Filters
+            </Button>
+            <Button
+              variant="contained"
+              color="default"
+              onClick={handleDownloadCSV}
+            >
+              Download CSV
+            </Button>
           </div>
         </div>
       )}
