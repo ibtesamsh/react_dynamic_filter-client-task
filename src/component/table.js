@@ -415,6 +415,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import data from '../asset/data.json';
 import { FiltersComponent } from './filter.js';
+import robot from '../asset/robot-01.svg';
+import Typography from "@mui/material/Typography";
 
 const columns = [
   { id: 'id', label: 'ID', minWidth: 100 },
@@ -490,6 +492,7 @@ export function StickyHeadTable() {
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
       <FiltersComponent filteredData={filteredData} onFilterChange={handleFilterChange} />
+      {filteredData.length > 0 ? (
       <TableContainer sx={{ maxHeight: 400 }}>
         <Table stickyHeader>
           <TableHead>
@@ -516,11 +519,21 @@ export function StickyHeadTable() {
           </TableBody>
         </Table>
       </TableContainer>
+      ) : (
+        <div style={{ textAlign: "center", padding: "20px" }}>
+          <img src={robot} alt="No data found" style={{ width: "150px", marginBottom: "10px" }} />
+          <Typography variant="h6" color="textSecondary">
+            No data found
+          </Typography>
+        </div>
+      )}
+      {filteredData.length > 0 && (
       <PaginationComponent
         totalRows={filteredData.length}
         onPageChange={handlePageChange}
         onRowsPerPageChange={handleRowsPerPageChange}
       />
+      )}
     </Paper>
   );
 }
