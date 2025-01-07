@@ -1,0 +1,25 @@
+{
+    "filters": {
+      "dateRange": {
+        "label": "Select by Date",
+        "type": "date",
+        "options": ["Today", "Yesterday", "Last 7 Days", "Custom Range"]
+      },
+      "reportType": {
+        "label": "Report Type",
+        "type": "dropdown",
+        "options": ["volumeReport", "callReport", "errorReport"]
+      },
+      "azureResponse": {
+        "label": "Azure Response",
+        "type": "dropdown",
+        "options": ["success", "failure", "pending"]
+      },
+      "queryResponse": {
+        "label": "Query Response",
+        "type": "dropdown",
+        "options": ["success", "failure", "pending"]
+      }
+    }
+  }
+  

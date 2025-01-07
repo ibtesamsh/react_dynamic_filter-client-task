@@ -1,0 +1,155 @@
+{
+  "filters": [
+    {
+      "id": "users",
+      "label": "Users",
+      "type": "dropdown",
+      "options": ["user1","user2","user3","user4","user5"],
+      "placeholder": "Loading..."
+    },
+    {
+      "id": "phone_number",
+      "label": "Phone Number",
+      "type": "text",
+      "placeholder": "e.g. 12XX333, 332XX23"
+    },
+    {
+      "id": "did_number",
+      "label": "DID Number",
+      "type": "text",
+      "placeholder": "Enter DID number"
+    },
+    {
+      "id": "reference_id",
+      "label": "Reference ID",
+      "type": "text",
+      "placeholder": "Enter Reference Id"
+    },
+    {
+      "id": "disconnector",
+      "label": "Disconnector",
+      "type": "dropdown",
+      "options": ["user1","user2","user3","user4","user5"],
+      "placeholder": "Select Disconnector"
+    },
+    {
+      "id": "end_point",
+      "label": "End Point",
+      "type": "dropdown",
+      "options": ["user1","user2","user3","user4","user5"],
+      "placeholder": "Select end point"
+    },
+    {
+      "id": "leadset",
+      "label": "Leadset",
+      "type": "dropdown",
+      "options": ["LeadsetA","LeadsetB","LeadsetC","LeadsetD","LeadsetE"],
+      "placeholder": "Loading..."
+    },
+    {
+      "id": "mode_of_calling",
+      "label": "Mode of Calling",
+      "type": "dropdown",
+      "options": ["Manual","Auto"],
+      "placeholder": "Loading..."
+    },
+    {
+      "id": "call_type",
+      "label": "Call Type",
+      "type": "dropdown",
+      "options": ["Inbound","Outbound"],
+      "placeholder": "Select call type"
+    },
+    {
+      "id": "lob",
+      "label": "LOB",
+      "type": "dropdown",
+      "options": ["LOB1","LOB2","LOB3","LOB4","LOB5"],
+      "placeholder": "Loading..."
+    },
+    {
+      "id": "campaign",
+      "label": "Campaign",
+      "type": "dropdown",
+      "options": ["CampaignA","CampaignB","CampaignC","CampaignD","CampaignE"],
+      "placeholder": "Search Campaign"
+    },
+    {
+      "id": "process",
+      "label": "Process",
+      "type": "dropdown",
+      "options": ["Process1","Process2","Process3","Process4","Process5"],
+      "placeholder": "Loading..."
+    },
+    {
+      "id": "dispose_first_level",
+      "label": "Dispose First Level",
+      "type": "dropdown",
+      "options": ["Level1Dispose"],
+      "placeholder": "Loading..."
+    },
+    {
+      "id": "dispose_second_level",
+      "label": "Dispose Second Level",
+      "type": "dropdown",
+      "options": ["Level2Dispose"],
+      "placeholder": "Loading..."
+    },
+    {
+      "id": "azureResponse",
+      "label": "Azure Response",
+      "type": "dropdown",
+      "options": ["success","failure"],
+      "placeholder": "choose response"
+    },
+    {
+      "id": "queryResponse",
+      "label": "Query Response",
+      "type": "dropdown",
+      "options": ["success","failure"],
+      "placeholder": "choose response"
+    },
+    {
+      "id": "dispose_third_level",
+      "label": "Dispose Third Level",
+      "type": "dropdown",
+      "options": ["Level3Dispose"],
+      "placeholder": "Loading..."
+    },
+    {
+      "id": "createdDate",
+      "label": "Select By Date",
+      "type": "dropdown",
+      "options": [
+        { "value": "today", "label": "Today" },
+        { "value": "yesterday", "label": "Yesterday" },
+        { "value": "last_7_days", "label": "Last 7 Days" },
+        { "value": "last_30_days", "label": "Last 30 Days" },
+        { "value": "custom_range", "label": "Custom Range" }
+      ],
+      "placeholder": "Today",
+      "sub_filters": {
+        "custom_range": [
+          {
+            "id": "start_date",
+            "label": "Start Date",
+            "type": "date",
+            "placeholder": "Select Start Date"
+          },
+          {
+            "id": "end_date",
+            "label": "End Date",
+            "type": "date",
+            "placeholder": "Select End Date"
+          }
+        ]
+      }
+    },
+    {
+      "id": "free_text_search",
+      "label": "Free Text Search",
+      "type": "text",
+      "placeholder": "Type to search"
+    }
+  ]
+}
