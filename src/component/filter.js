@@ -405,6 +405,9 @@ import React, { useState } from "react";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
+import { CiFilter } from "react-icons/ci";
+import { AiOutlineDownload } from "react-icons/ai";
+import { GrPowerReset } from "react-icons/gr";
 import Button from "@mui/material/Button";
 import filterData from "../asset/filter.json";
 import { saveAs } from "file-saver";
@@ -468,6 +471,10 @@ export const FiltersComponent = ({ filteredData, onFilterChange }) => {
         <Button
           variant="contained"
           color="primary"
+          sx={{
+            borderRadius: '30px',
+            backgroundColor: "purple",
+          }}
           onClick={toggleFilters}
           style={{ marginBottom: "16px" }}
         >
@@ -577,16 +584,36 @@ export const FiltersComponent = ({ filteredData, onFilterChange }) => {
               gap: "8px",
             }}
           >
-            <Button variant="contained" color="primary" onClick={handleFilter}>
-              Filter
+            <Button variant="contained" sx={{
+              borderRadius: '30px',
+              backgroundColor:"green"
+
+            }} color="primary" onClick={handleFilter}
+            startIcon={<CiFilter />}>
+            Filter
             </Button>
-            <Button variant="outlined" color="secondary" onClick={handleReset}>
+            <Button
+              variant="outlined"
+              sx={{
+                backgroundColor: "purple",
+                color: "white",
+                border: 'none',
+                borderRadius: '30px',
+              }}
+              onClick={handleReset}
+              startIcon={<GrPowerReset />}
+            >
               Reset Filters
             </Button>
             <Button
               variant="contained"
-              color="default"
+              // color="default"
               onClick={handleDownloadCSV}
+              sx={{
+                backgroundColor: "#6569DF",
+                borderRadius: '30px',
+              }}
+              startIcon={<AiOutlineDownload />}
             >
               Download CSV
             </Button>

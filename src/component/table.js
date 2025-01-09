@@ -500,7 +500,7 @@ export function StickyHeadTable() {
               {columns.map((column) => (
                 <TableCell
                   key={column.id}
-                  style={{ minWidth: column.minWidth, cursor: 'pointer'}}
+                  style={{ minWidth: column.minWidth, cursor: 'pointer', backgroundColor: '#f4f4f4' }}
                   onClick={() => handleSort(column.id)}
                 >
                   {column.label} {sortConfig.key === column.id ? (sortConfig.direction === 'asc' ? <IoIosArrowRoundUp /> : <IoIosArrowRoundDown />) : ''}
